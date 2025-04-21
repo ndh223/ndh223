@@ -1,7 +1,7 @@
 <h1 align="center"><b>Hi , I'm Nguyen Duy Hiep </b><img src="hello.gif" width="35"></h1>
 <p align="center">
   <a href="https://github.com/DenverCoder1/readme-typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=900&lines=Cybersecurity+Developer;Self-taught+Security+Researcher;IT+Student+specializing+in+Cybersecurity;Secure+Javascript+Fullstack+Developer;CTF+Player+%7C+Ethical+Hacker;Offensive+and+Defensive+Security+Learner;Always+curious+about+how+systems+break+and+how+to+protect+them">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=800&lines=My+name+Nguyen+Duy+Hiep+and+I+am+a+programmer.">
   </a>
 </p>
 
