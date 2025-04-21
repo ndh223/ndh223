@@ -1,4 +1,4 @@
-<h1 align="center"><b>Hi , I'm Nguyen Duy Hiep </b><img src="gifs/hello.gif" width="35"></h1>
+<h1 align="center"><b>Hi , I'm Nguyen Duy Hiep </b><img src="hello.gif" width="35"></h1>
 
 ## 💫<b>About Me</b>
 <br>
