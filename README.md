@@ -8,9 +8,9 @@
 ## 💫<b>About Me</b>
 <br>
 
-- 🔭 I am pursuing a Bachelor's degree in <b>Software Engineering</b> at <a href="https://hau.edu.vn/">HANOI ARCHITECTURAL UNIVERSITY of Information Technology.</a>
-- 🛡️ I am highly interested in Cybersecurity, especially in areas such as penetration testing, network security, and digital forensics. 
-- 👨‍💻 I am also expanding my skills in malware analysis, web application security, and ethical hacking
+- 🔭 I am pursuing a Engineer's degree in <b>Information Security</b> at <a href="https://hau.edu.vn/">HANOI ARCHITECTURAL UNIVERSITY of Information Technology.</a>
+- 🛡️ I am highly interested in Cybersecurity, especially in areas such as penetration testing, malware anlysis, and digital forensics. 
+- 👨‍💻 I am also expanding my skills in web application security, and ethical hacking
 - 📧 How to reach me: <a href="mailto:nguyenduyhiep2k5@gmail.com">nguyenduyhiep2k5@gmail.com</a>
 <br>
 
