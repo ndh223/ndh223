@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗 Bãi Đỗ Xe Thông Minh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="floating-vehicles"></div>
+
+    <div class="game-container">
+        <div class="header">
+            <h1>🚗 Bãi Đỗ Xe Thông Minh 🎮</h1>
+            <p>Tối ưu hóa bãi đỗ xe với AI Hill Climbing!</p>
+        </div>
+
+        {% if message %}
+            <div class="message {{ 'error' if 'lỗi' in message.lower() or 'không' in message.lower() or 'tồn tại' in message.lower() else 'success' }}">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <div class="score-board">
+            <div class="score-item">
+                <div class="score-value">{{ cost }}</div>
+                <div class="score-label">Tổng Chi Phí</div>
+            </div>
+            <div class="score-item">
+                <div class="score-value">{{ assigned }}/{{ total }}</div>
+                <div class="score-label">Xe Đã Phân Bổ</div>
+            </div>
+            <div class="score-item">
+                <div class="score-value">{{ (assigned/total*100) if total > 0 else 0 | round(1) }}%</div>
+                <div class="score-label">Hiệu Suất</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="control-panel">
+                <h2>🎮 Thêm/Xóa Xe</h2>
+                <form method="POST">
+                    <input type="hidden" name="action" value="add"/>
+                    <div class="form-group">
+                        <label for="vehicle_id">🚗 Biển Số Xe:</label>
+                        <input type="text" name="vehicle_id" id="vehicle_id" placeholder="Nhập biển số xe..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicle_size">📏 Kích Thước:</label>
+                        <select name="vehicle_size" id="vehicle_size">
+                            <option value="small">Xe Nhỏ 🚗</option>
+                            <option value="medium">Xe Vừa 🚙</option>
+                            <option value="large">Xe Lớn 🚐</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parking_time">⏰ Thời Gian Đỗ (giờ):</label>
+                        <input type="number" step="0.5" name="parking_time" id="parking_time" value="1.0" min="0.5" max="24" required>
+                    </div>
+                    <button type="submit" class="btn">🚀 Thêm Xe</button>
+                </form>
+
+                <form method="POST" style="margin-top: 15px;">
+                    <input type="hidden" name="action" value="remove"/>
+                    <div class="form-group">
+                        <label for="remove_vehicle_id">🗑️ Xóa Xe Theo Biển Số:</label>
+                        <input type="text" name="remove_vehicle_id" id="remove_vehicle_id" placeholder="Nhập biển số xe để xóa...">
+                    </div>
+                    <button type="submit" class="btn" style="background: linear-gradient(45deg,#e74c3c,#c0392b);">🗑️ Xóa Xe</button>
+                </form>
+
+                <form method="POST" style="margin-top: 15px;">
+                    <input type="hidden" name="action" value="clear"/>
+                    <button type="submit" class="btn" style="background: linear-gradient(45deg,#8e44ad,#6c5ce7);">🧹 Xóa Tất Cả Xe</button>
+                </form>
+
+                {% if vehicles %}
+                <div class="vehicle-list">
+                    <h3>🚗 Danh Sách Xe</h3>
+                    {% for v in vehicles %}
+                        <div class="vehicle-item">
+                            <span><strong>{{ v.id }}</strong> - {{ v.size.title() }}</span>
+                            <span>{{ v.parking_time }}h</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="parking-lot">
+                <h2>🏢 Bãi Đỗ Xe</h2>
+                <div class="parking-spots">
+                    {% for s in spots %}
+                    <div class="spot {{ 'occupied' if s.occupied else 'empty' }}">
+                        <div class="spot-id">Chỗ #{{ s.id }}</div>
+                        <div class="spot-info">📍 {{ s.spot_type.title() }}</div>
+                        <div class="spot-info">📏 {{ s.size.title() }}</div>
+                        <div class="spot-info">⭐ Độ Khó: {{ s.driver_difficulty }}</div>
+                        {% if s.occupied %}
+                            <div class="vehicle-assigned">🚗 {{ s.occupied }}</div>
+                        {% else %}
+                            <div class="vehicle-assigned">🅿️ Trống</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if vehicles %}
+                <div class="optimization-progress">
+                    <h3>🧠 Tối Ưu Hóa AI</h3>
+                    <p>Thuật Toán Hill Climbing Đang Hoạt Động</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" 
+                             data-target-width="{{ (assigned/total*100) if total > 0 else 0 }}" 
+                             style="width: 0%"></div>
+                    </div>
+                    <p>Tối ưu hóa hoàn tất! ✅</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
